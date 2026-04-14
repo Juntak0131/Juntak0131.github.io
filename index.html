@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* 새로운 다크 모드 & 에메랄드 테마 변수 */
+        /* 기존 다크 모드 & 에메랄드 테마 색상 (유지) */
         :root {
-            --accent-color: #10b981; /* 에메랄드 그린 포인트 */
+            --accent-color: #10b981; 
             --accent-glow: rgba(16, 185, 129, 0.4);
-            --bg-main: #0f172a; /* 깊은 네이비/블랙 */
-            --bg-alt: #0b1120; /* 더 어두운 배경 (섹션 구분용) */
-            --card-bg: #1e293b; /* 카드 배경 */
-            --text-main: #f8fafc; /* 밝은 텍스트 */
-            --text-muted: #94a3b8; /* 회색 텍스트 */
-            --border-color: #334155; /* 은은한 테두리 */
+            --bg-main: #0f172a; 
+            --bg-alt: #0b1120; 
+            --card-bg: #1e293b; 
+            --text-main: #f8fafc; 
+            --text-muted: #94a3b8; 
+            --border-color: #334155; 
         }
 
         * {
@@ -38,7 +38,7 @@
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
 
-        /* 상단 네비게이션 바 (블랙 투명) */
+        /* 상단 네비게이션 바 */
         header {
             position: fixed;
             top: 0;
@@ -49,7 +49,7 @@
             align-items: center;
             padding: 20px 8%;
             background-color: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(10px); /* 배경 블러 효과 */
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
         }
@@ -74,64 +74,63 @@
             text-shadow: 0 0 8px var(--accent-glow);
         }
 
-        /* 메인 히어로 섹션 */
+        /* 메인 히어로 섹션 (화면 꽉 차게 변경) */
         #about {
-            height: 60vh;
-            min-height: 450px;
+            height: 100vh; /* 화면 높이에 맞춤 */
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
-            /* 원형 그라데이션으로 깊이감 부여 */
-            background: radial-gradient(circle at center, #1e293b 0%, #0b1120 100%);
-            margin-top: 70px;
+            align-items: flex-start; /* 좌측 정렬로 변경 */
+            padding: 0 10%;
+            background: radial-gradient(circle at right bottom, #1e293b 0%, #0b1120 80%);
             border-bottom: 1px solid var(--border-color);
         }
 
         #about h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 20px;
             letter-spacing: -1px;
+            line-height: 1.2;
         }
 
         #about h1 span { color: var(--accent-color); }
-        #about p.subtitle { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 30px; }
+        #about p.subtitle { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; max-width: 600px; }
 
-        .contact-links { display: flex; gap: 20px; font-size: 1rem; color: var(--text-muted); }
-        .contact-links a { display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
+        .contact-links { display: flex; flex-direction: column; gap: 15px; font-size: 1.05rem; color: var(--text-muted); }
+        .contact-links a { display: flex; align-items: center; gap: 12px; transition: color 0.2s; }
         .contact-links a:hover { color: var(--text-main); }
-        .contact-links i { color: var(--accent-color); font-size: 1.2rem; }
+        .contact-links i { color: var(--accent-color); font-size: 1.2rem; width: 20px; text-align: center; }
 
         /* 공통 섹션 레이아웃 */
-        section { padding: 100px 8%; }
+        section { padding: 120px 10%; } /* 여백 확대 */
         section:nth-child(even) { background-color: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
 
+        /* 섹션 타이틀 좌측 정렬 변경 */
         .section-title {
-            text-align: center;
+            text-align: left;
             font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 60px;
             letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         .section-title::after {
             content: '';
             display: block;
-            width: 50px;
-            height: 4px;
-            background-color: var(--accent-color);
-            margin: 15px auto 0;
-            border-radius: 2px;
+            flex-grow: 1; /* 제목 옆으로 선이 쭉 그어지도록 위치 변경 */
+            height: 1px;
+            background-color: var(--border-color);
+            margin-top: 5px;
         }
 
-        /* Skills 카드 스타일 (선과 야간모드 조화) */
+        /* Skills 카드 스타일 */
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            max-width: 1000px;
-            margin: 0 auto;
         }
 
         .skill-card {
@@ -151,33 +150,62 @@
         .skill-card h3 i { color: var(--accent-color); }
         .skill-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
 
-        /* 리스트 형태 (경력, 학력, 자격증) */
-        .list-container { max-width: 750px; margin: 0 auto; }
-        .list-item {
-            display: flex;
-            align-items: flex-start;
-            padding: 30px 0;
-            border-bottom: 1px solid var(--border-color);
+        /* 타임라인 레이아웃 (새로 변경된 리스트 구조) */
+        .timeline-container {
+            position: relative;
+            padding-left: 40px;
+            max-width: 800px;
         }
-        .list-item:last-child { border-bottom: none; }
-        .list-date {
-            width: 180px;
-            font-size: 1rem;
+        
+        /* 세로선 */
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 2px;
+            height: 100%;
+            background-color: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        /* 동그란 점 */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -46.5px; /* 세로선에 맞춤 */
+            top: 2px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--bg-main);
+            border: 3px solid var(--accent-color);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--accent-color);
-            flex-shrink: 0;
+            margin-bottom: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
         }
-        .list-content { flex-grow: 1; }
-        .list-title { font-size: 1.2rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px; }
-        .list-desc { font-size: 0.95rem; color: var(--text-muted); }
+
+        .timeline-title { font-size: 1.3rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px; }
+        .timeline-desc { font-size: 1rem; color: var(--text-muted); }
 
         /* Portfolio 카드 스타일 */
         .portfolio-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
         }
 
         .portfolio-card {
@@ -188,9 +216,10 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
         
-        /* 카드 상단에 얇은 포인트 컬러 선 추가 */
         .portfolio-card::before {
             content: '';
             position: absolute;
@@ -205,20 +234,15 @@
 
         .portfolio-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 15px; color: var(--text-main); }
         
-        /* 태그 스타일의 기술 스택 */
         .portfolio-tech {
-            display: inline-block;
             font-size: 0.8rem;
             color: var(--accent-color);
-            background: rgba(16, 185, 129, 0.1);
-            padding: 6px 12px;
-            border-radius: 4px;
             font-weight: 600;
             margin-bottom: 20px;
             letter-spacing: 0.5px;
         }
 
-        .portfolio-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
+        .portfolio-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; flex-grow: 1; }
 
         /* Footer */
         footer {
@@ -233,10 +257,12 @@
         /* 모바일 반응형 */
         @media (max-width: 768px) {
             .nav-menu { display: none; }
-            #about h1 { font-size: 2.2rem; }
-            .contact-links { flex-direction: column; gap: 15px; }
-            .list-item { flex-direction: column; padding: 20px 0; }
-            .list-date { margin-bottom: 10px; width: auto; }
+            #about { padding: 0 5%; align-items: center; text-align: center; }
+            #about h1 { font-size: 2.5rem; }
+            section { padding: 80px 5%; }
+            .timeline-container { padding-left: 20px; }
+            .timeline-container::before { left: 0; }
+            .timeline-item::before { left: -26.5px; }
             .portfolio-container { grid-template-columns: 1fr; }
         }
     </style>
@@ -255,7 +281,7 @@
     </header>
 
     <section id="about">
-        <h1>안녕하세요, 개발자 <span>한준탁</span>입니다.</h1>
+        <h1>안녕하세요,<br>개발자 <span>한준탁</span>입니다.</h1>
         <p class="subtitle">효율적인 시스템 아키텍처를 고민하고 안정적인 서비스를 지향하는 개발자입니다.</p>
         
         <div class="contact-links">
@@ -293,22 +319,18 @@
 
     <section id="experience">
         <h2 class="section-title">Experience & Education</h2>
-        <div class="list-container">
+        <div class="timeline-container">
             
-            <div class="list-item">
-                <div class="list-date">20XX.XX ~ Present</div>
-                <div class="list-content">
-                    <div class="list-title">회사명 또는 프로젝트 팀명</div>
-                    <div class="list-desc">수행하신 업무 및 직무 내용 요약 기입</div>
-                </div>
+            <div class="timeline-item">
+                <div class="timeline-date">20XX.XX ~ Present</div>
+                <div class="timeline-title">회사명 또는 프로젝트 팀명</div>
+                <div class="timeline-desc">수행하신 업무 및 직무 내용 요약 기입</div>
             </div>
 
-            <div class="list-item">
-                <div class="list-date">20XX.03 ~ 20XX.02</div>
-                <div class="list-content">
-                    <div class="list-title">OO대학교</div>
-                    <div class="list-desc">컴퓨터공학과 졸업</div>
-                </div>
+            <div class="timeline-item">
+                <div class="timeline-date">20XX.03 ~ 20XX.02</div>
+                <div class="timeline-title">OO대학교</div>
+                <div class="timeline-desc">컴퓨터공학과 졸업</div>
             </div>
 
         </div>
@@ -347,393 +369,16 @@
 
     <section id="awards">
         <h2 class="section-title">Awards & Certifications</h2>
-        <div class="list-container">
+        <div class="timeline-container">
             
-            <div class="list-item">
-                <div class="list-date">20XX.XX</div>
-                <div class="list-content">
-                    <div class="list-title">정보처리기사</div>
-                </div>
+            <div class="timeline-item">
+                <div class="timeline-date">20XX.XX 취득</div>
+                <div class="timeline-title">정보처리기사</div>
             </div>
 
-            <div class="list-item">
-                <div class="list-date">20XX.XX</div>
-                <div class="list-content">
-                    <div class="list-title">교내 프로그래밍 경진대회 우수상</div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2026 한준탁. All rights reserved.</p>
-    </footer>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>한준탁 | RESUME</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* 새로운 다크 모드 & 에메랄드 테마 변수 */
-        :root {
-            --accent-color: #10b981; /* 에메랄드 그린 포인트 */
-            --accent-glow: rgba(16, 185, 129, 0.4);
-            --bg-main: #0f172a; /* 깊은 네이비/블랙 */
-            --bg-alt: #0b1120; /* 더 어두운 배경 (섹션 구분용) */
-            --card-bg: #1e293b; /* 카드 배경 */
-            --text-main: #f8fafc; /* 밝은 텍스트 */
-            --text-muted: #94a3b8; /* 회색 텍스트 */
-            --border-color: #334155; /* 은은한 테두리 */
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            color: var(--text-main);
-            background-color: var(--bg-main);
-            line-height: 1.6;
-        }
-
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-
-        /* 상단 네비게이션 바 (블랙 투명) */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            background-color: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(10px); /* 배경 블러 효과 */
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: var(--accent-color);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .nav-menu { display: flex; gap: 30px; }
-        .nav-menu a {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-main);
-            transition: color 0.3s, text-shadow 0.3s;
-        }
-        .nav-menu a:hover {
-            color: var(--accent-color);
-            text-shadow: 0 0 8px var(--accent-glow);
-        }
-
-        /* 메인 히어로 섹션 */
-        #about {
-            height: 60vh;
-            min-height: 450px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            /* 원형 그라데이션으로 깊이감 부여 */
-            background: radial-gradient(circle at center, #1e293b 0%, #0b1120 100%);
-            margin-top: 70px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        #about h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-
-        #about h1 span { color: var(--accent-color); }
-        #about p.subtitle { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 30px; }
-
-        .contact-links { display: flex; gap: 20px; font-size: 1rem; color: var(--text-muted); }
-        .contact-links a { display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
-        .contact-links a:hover { color: var(--text-main); }
-        .contact-links i { color: var(--accent-color); font-size: 1.2rem; }
-
-        /* 공통 섹션 레이아웃 */
-        section { padding: 100px 8%; }
-        section:nth-child(even) { background-color: var(--bg-alt); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 60px;
-            letter-spacing: 1px;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 4px;
-            background-color: var(--accent-color);
-            margin: 15px auto 0;
-            border-radius: 2px;
-        }
-
-        /* Skills 카드 스타일 (선과 야간모드 조화) */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .skill-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s, border-color 0.3s;
-        }
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-
-        .skill-card h3 { font-size: 1.15rem; color: var(--text-main); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .skill-card h3 i { color: var(--accent-color); }
-        .skill-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; }
-
-        /* 리스트 형태 (경력, 학력, 자격증) */
-        .list-container { max-width: 750px; margin: 0 auto; }
-        .list-item {
-            display: flex;
-            align-items: flex-start;
-            padding: 30px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .list-item:last-child { border-bottom: none; }
-        .list-date {
-            width: 180px;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            flex-shrink: 0;
-        }
-        .list-content { flex-grow: 1; }
-        .list-title { font-size: 1.2rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px; }
-        .list-desc { font-size: 0.95rem; color: var(--text-muted); }
-
-        /* Portfolio 카드 스타일 */
-        .portfolio-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .portfolio-card {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        /* 카드 상단에 얇은 포인트 컬러 선 추가 */
-        .portfolio-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 3px;
-            background: var(--border-color);
-            transition: background 0.3s;
-        }
-
-        .portfolio-card:hover { transform: translateY(-5px); border-color: #475569; }
-        .portfolio-card:hover::before { background: var(--accent-color); }
-
-        .portfolio-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 15px; color: var(--text-main); }
-        
-        /* 태그 스타일의 기술 스택 */
-        .portfolio-tech {
-            display: inline-block;
-            font-size: 0.8rem;
-            color: var(--accent-color);
-            background: rgba(16, 185, 129, 0.1);
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: 0.5px;
-        }
-
-        .portfolio-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
-
-        /* Footer */
-        footer {
-            background-color: #020617;
-            color: var(--text-muted);
-            text-align: center;
-            padding: 40px;
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        /* 모바일 반응형 */
-        @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            #about h1 { font-size: 2.2rem; }
-            .contact-links { flex-direction: column; gap: 15px; }
-            .list-item { flex-direction: column; padding: 20px 0; }
-            .list-date { margin-bottom: 10px; width: auto; }
-            .portfolio-container { grid-template-columns: 1fr; }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <a href="#" class="logo">RESUME.</a>
-        <nav class="nav-menu">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#experience">Experience</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#awards">Awards</a>
-        </nav>
-    </header>
-
-    <section id="about">
-        <h1>안녕하세요, 개발자 <span>한준탁</span>입니다.</h1>
-        <p class="subtitle">효율적인 시스템 아키텍처를 고민하고 안정적인 서비스를 지향하는 개발자입니다.</p>
-        
-        <div class="contact-links">
-            <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i> your-email@example.com</a>
-            <a href="https://github.com/your-github-id" target="_blank"><i class="fab fa-github"></i> github.com/your-github-id</a>
-        </div>
-    </section>
-
-    <section id="skills">
-        <h2 class="section-title">Technical Skills</h2>
-        <div class="skills-container">
-            
-            <div class="skill-card">
-                <h3><i class="fas fa-code"></i> Languages</h3>
-                <p>Java, C#, C, Python, SQL, JavaScript</p>
-            </div>
-
-            <div class="skill-card">
-                <h3><i class="fas fa-globe"></i> Web Development</h3>
-                <p>React, Vite, JSP, Servlet, HTML5, CSS3</p>
-            </div>
-
-            <div class="skill-card">
-                <h3><i class="fas fa-gamepad"></i> Game Engine</h3>
-                <p>Unity</p>
-            </div>
-
-            <div class="skill-card">
-                <h3><i class="fas fa-database"></i> Database & Tools</h3>
-                <p>MySQL, Linux, Visual Studio</p>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="experience">
-        <h2 class="section-title">Experience & Education</h2>
-        <div class="list-container">
-            
-            <div class="list-item">
-                <div class="list-date">20XX.XX ~ Present</div>
-                <div class="list-content">
-                    <div class="list-title">회사명 또는 프로젝트 팀명</div>
-                    <div class="list-desc">수행하신 업무 및 직무 내용 요약 기입</div>
-                </div>
-            </div>
-
-            <div class="list-item">
-                <div class="list-date">20XX.03 ~ 20XX.02</div>
-                <div class="list-content">
-                    <div class="list-title">OO대학교</div>
-                    <div class="list-desc">컴퓨터공학과 졸업</div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="portfolio">
-        <h2 class="section-title">Portfolio</h2>
-        <div class="portfolio-container">
-
-            <div class="portfolio-card">
-                <h3 class="portfolio-title">UPM (Universal PC Master)</h3>
-                <div class="portfolio-tech">C# / PYTHON / FASTAPI / MYSQL</div>
-                <p class="portfolio-desc">
-                    PC 하드웨어 상태 실시간 모니터링 및 중앙 제어 시스템입니다. C# 기반 에이전트를 통해 CPU, 메모리 등의 데이터를 수집하고, FastAPI 백엔드와 연동하여 실시간 모니터링 환경을 구현하였습니다.
-                </p>
-            </div>
-
-            <div class="portfolio-card">
-                <h3 class="portfolio-title">두 번째 프로젝트명</h3>
-                <div class="portfolio-tech">REACT / JAVA / MYSQL</div>
-                <p class="portfolio-desc">
-                    이곳에 두 번째 프로젝트의 설명을 작성합니다. 사용자가 어떤 기능을 이용할 수 있는지, 본인이 어떤 기술을 활용해 시스템을 구현했는지 3~4줄로 명확하게 요약해 주세요.
-                </p>
-            </div>
-
-            <div class="portfolio-card">
-                <h3 class="portfolio-title">세 번째 프로젝트명</h3>
-                <div class="portfolio-tech">UNITY / C#</div>
-                <p class="portfolio-desc">
-                    이곳에 세 번째 프로젝트의 설명을 작성합니다. 주요 구현 기능(예: 캐릭터 이동 알고리즘, 물리 엔진 적용 등)과 프로젝트를 통해 해결한 문제점을 간결하게 적어주시면 좋습니다.
-                </p>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="awards">
-        <h2 class="section-title">Awards & Certifications</h2>
-        <div class="list-container">
-            
-            <div class="list-item">
-                <div class="list-date">20XX.XX</div>
-                <div class="list-content">
-                    <div class="list-title">정보처리기사</div>
-                </div>
-            </div>
-
-            <div class="list-item">
-                <div class="list-date">20XX.XX</div>
-                <div class="list-content">
-                    <div class="list-title">교내 프로그래밍 경진대회 우수상</div>
-                </div>
+            <div class="timeline-item">
+                <div class="timeline-date">20XX.XX 수상</div>
+                <div class="timeline-title">교내 프로그래밍 경진대회 우수상</div>
             </div>
 
         </div>

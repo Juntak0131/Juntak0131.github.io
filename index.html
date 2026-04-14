@@ -3,267 +3,439 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>한준탁 | 포트폴리오</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>한준탁 | Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* 기본 스타일 설정 */
+        /* 기본 설정 */
+        :root {
+            --bg-color: #f8f9fa;
+            --sidebar-bg: #212529;
+            --text-main: #343a40;
+            --text-muted: #6c757d;
+            --accent: #0d6efd;
+            --accent-hover: #0b5ed7;
+            --card-bg: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
+            font-family: 'Poppins', 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             line-height: 1.6;
-            margin: 0;
-            padding: 40px 20px;
-        }
-
-        /* 이력서 메인 컨테이너 */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 50px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-        }
-
-        /* 헤더 (인사말 & 연락처) */
-        header {
-            text-align: center;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 30px;
-            margin-bottom: 40px;
-        }
-        header h1 {
-            font-size: 2.2em;
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-        .contact-info {
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            font-size: 1.1em;
-        }
-        .contact-info a {
-            color: #34495e;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .contact-info a:hover {
-            color: #3498db;
         }
 
-        /* 섹션 공통 스타일 */
-        section {
-            margin-bottom: 40px;
-        }
-        .section-title {
-            font-size: 1.5em;
-            color: #2c3e50;
-            border-left: 4px solid #3498db;
-            padding-left: 12px;
-            margin-bottom: 20px;
-        }
-
-        /* 스킬 배지 스타일 */
-        .skill-group {
-            margin-bottom: 15px;
-        }
-        .skill-group h4 {
-            margin: 0 0 10px 0;
-            color: #555;
-            font-size: 1.05em;
-        }
-        .badge {
-            display: inline-block;
-            background-color: #f0f4f8;
-            color: #2980b9;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 500;
-            margin: 0 5px 8px 0;
-            border: 1px solid #d9e2ec;
-        }
-
-        /* 포트폴리오 카드 스타일 */
-        .portfolio-grid {
+        /* 좌측 사이드바 */
+        #sidebar {
+            width: 280px;
+            height: 100vh;
+            background-color: var(--sidebar-bg);
+            position: fixed;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-        }
-        .card {
-            border: 1px solid #e1e8ed;
-            padding: 20px;
-            border-radius: 8px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-        }
-        .card h4 {
-            margin-top: 0;
-            color: #2c3e50;
-            font-size: 1.2em;
-            margin-bottom: 8px;
-        }
-        .card p {
-            color: #666;
-            margin-bottom: 10px;
-        }
-        
-        /* 리스트 스타일 (학력, 경력, 자격증) */
-        .item-list {
-            list-style: none;
-            padding: 0;
-        }
-        .item-list li {
-            margin-bottom: 15px;
-            position: relative;
-            padding-left: 20px;
-        }
-        .item-list li::before {
-            content: "•";
-            color: #3498db;
-            position: absolute;
-            left: 0;
-            font-size: 1.2em;
-        }
-        .item-title {
-            font-weight: 700;
-            color: #333;
-        }
-        .item-date {
-            font-size: 0.9em;
-            color: #888;
-            display: block;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            color: white;
+            z-index: 100;
         }
 
-        /* 반응형 (모바일) 처리 */
-        @media (max-width: 600px) {
-            .container { padding: 30px 20px; }
-            .contact-info { flex-direction: column; gap: 10px; }
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 6px solid rgba(255,255,255,0.1);
+            background-color: #495057; /* 사진 없을 때 배경 */
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        #sidebar h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .social-links {
+            margin-top: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            background: rgba(255,255,255,0.1);
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            background: white;
+        }
+
+        .nav-menu {
+            list-style: none;
+            width: 100%;
+            text-align: center;
+        }
+
+        .nav-menu li { margin-bottom: 15px; }
+
+        .nav-menu a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        /* 메인 컨텐츠 영역 */
+        #main-content {
+            margin-left: 280px;
+            padding: 0;
+            width: calc(100% - 280px);
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 80px 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--sidebar-bg);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+
+        /* About 섹션 */
+        #about h2 { font-size: 3.5rem; margin-bottom: 10px; }
+        #about h2 span { color: var(--accent); }
+        #about p.lead { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px; max-width: 700px; }
+        .contact-info-list { list-style: none; font-size: 1.1rem; }
+        .contact-info-list li { margin-bottom: 10px; }
+        .contact-info-list i { width: 30px; color: var(--accent); }
+
+        /* Skills 섹션 */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .skill-category {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .skill-category h3 { margin-bottom: 20px; font-size: 1.2rem; border-bottom: 2px solid #f1f3f5; padding-bottom: 10px; }
+        .skill-category i { margin-right: 8px; color: var(--accent); }
+        .badge-container { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-badge {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            color: var(--text-main);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Portfolio 섹션 */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .portfolio-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .portfolio-card:hover { transform: translateY(-10px); }
+        .portfolio-content { padding: 25px; }
+        .portfolio-content h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .portfolio-content p { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; }
+        .tech-stack span {
+            display: inline-block;
+            background: rgba(13, 110, 253, 0.1);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin: 0 5px 5px 0;
+            font-weight: 600;
+        }
+
+        /* Resume (경력/학력) 섹션 - 타임라인 스타일 */
+        .timeline { position: relative; padding-left: 30px; margin-bottom: 40px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--accent);
+        }
+        .timeline-item { position: relative; margin-bottom: 30px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 2px solid var(--accent);
+        }
+        .timeline-date {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .timeline-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; }
+        .timeline-subtitle { color: var(--accent); font-weight: 500; margin-bottom: 10px; font-size: 0.95rem; }
+
+        /* 반응형 모바일 */
+        @media (max-width: 900px) {
+            body { flex-direction: column; }
+            #sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 20px;
+            }
+            .profile-img { width: 100px; height: 100px; }
+            .nav-menu { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .nav-menu li { margin-bottom: 0; }
+            #main-content { margin-left: 0; width: 100%; }
+            section { padding: 50px 20px; min-height: auto; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>안녕하세요, 개발자 <strong>한준탁</strong>입니다.</h1>
-        <div class="contact-info">
-            <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i> your-email@example.com</a>
-            <a href="https://github.com/your-github-id" target="_blank"><i class="fab fa-github"></i> github.com/your-github-id</a>
-        </div>
-    </header>
-
-    <section>
-        <h2 class="section-title">Tech Stack</h2>
+    <nav id="sidebar">
+        <img src="https://via.placeholder.com/150" alt="Profile" class="profile-img">
+        <h1>한 준 탁</h1>
         
-        <div class="skill-group">
-            <h4><i class="fas fa-code"></i> Languages</h4>
-            <span class="badge">Java</span>
-            <span class="badge">Python</span>
-            <span class="badge">C</span>
-            <span class="badge">C#</span>
-            <span class="badge">SQL</span>
-            <span class="badge">JavaScript</span>
+        <div class="social-links">
+            <a href="https://github.com/your-github-id" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i></a>
         </div>
 
-        <div class="skill-group">
-            <h4><i class="fas fa-globe"></i> Web Technologies</h4>
-            <span class="badge">React</span>
-            <span class="badge">Vite</span>
-            <span class="badge">JSP</span>
-            <span class="badge">Servlet</span>
-            <span class="badge">HTML5</span>
-            <span class="badge">CSS3</span>
-        </div>
+        <ul class="nav-menu">
+            <li><a href="#about" class="active">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#resume">Resume</a></li>
+        </ul>
+    </nav>
 
-        <div class="skill-group">
-            <h4><i class="fas fa-gamepad"></i> Game Engine</h4>
-            <span class="badge">Unity</span>
-        </div>
-
-        <div class="skill-group">
-            <h4><i class="fas fa-database"></i> Database & Tools</h4>
-            <span class="badge">MySQL</span>
-            <span class="badge">Linux</span>
-            <span class="badge">Visual Studio</span>
-        </div>
-    </section>
-
-    <section>
-        <h2 class="section-title">Portfolio</h2>
-        <div class="portfolio-grid">
+    <main id="main-content">
+        
+        <section id="about">
+            <h2>Hello, I'm <span>한준탁</span></h2>
+            <p class="lead">끝없이 배우고 성장하는 개발자입니다. 안정적이고 효율적인 시스템 아키텍처와 사용자 중심의 서비스를 고민합니다.</p>
             
-            <div class="card">
-                <h4>UPM (Universal PC Master)</h4>
-                <p>PC 하드웨어 상태 실시간 모니터링 및 중앙 제어 시스템 구축</p>
-                <div class="skill-group" style="margin-bottom: 0;">
-                    <span class="badge" style="background:#e8f4f8; border:none; padding:4px 10px;">C#</span>
-                    <span class="badge" style="background:#e8f4f8; border:none; padding:4px 10px;">Python</span>
-                    <span class="badge" style="background:#e8f4f8; border:none; padding:4px 10px;">FastAPI</span>
-                    <span class="badge" style="background:#e8f4f8; border:none; padding:4px 10px;">MySQL</span>
+            <ul class="contact-info-list">
+                <li><i class="fas fa-envelope"></i> your-email@example.com</li>
+                <li><i class="fab fa-github"></i> github.com/your-github-id</li>
+                <li><i class="fas fa-map-marker-alt"></i> Seoul, South Korea</li>
+            </ul>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Languages</h3>
+                    <div class="badge-container">
+                        <span class="skill-badge">Java</span>
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">C</span>
+                        <span class="skill-badge">C#</span>
+                        <span class="skill-badge">SQL</span>
+                        <span class="skill-badge">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-globe"></i> Web Tech</h3>
+                    <div class="badge-container">
+                        <span class="skill-badge">React</span>
+                        <span class="skill-badge">Vite</span>
+                        <span class="skill-badge">JSP</span>
+                        <span class="skill-badge">Servlet</span>
+                        <span class="skill-badge">HTML5</span>
+                        <span class="skill-badge">CSS3</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-gamepad"></i> Game & Tools</h3>
+                    <div class="badge-container">
+                        <span class="skill-badge">Unity</span>
+                        <span class="skill-badge">Visual Studio</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> DB & Infra</h3>
+                    <div class="badge-container">
+                        <span class="skill-badge">MySQL</span>
+                        <span class="skill-badge">Linux</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <h2 class="section-title">Portfolio</h2>
+            <div class="portfolio-grid">
+                
+                <div class="portfolio-card">
+                    <div class="portfolio-content">
+                        <h3>UPM (Universal PC Master)</h3>
+                        <p>PC 하드웨어 상태 실시간 모니터링 및 중앙 제어 시스템입니다. C# 에이전트를 통해 시스템 메트릭을 수집하고, 비동기 서버를 통해 데이터를 처리합니다.</p>
+                        <div class="tech-stack">
+                            <span>C#</span>
+                            <span>Python</span>
+                            <span>FastAPI</span>
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-content">
+                        <h3>두 번째 프로젝트명</h3>
+                        <p>프로젝트에 대한 간단한 설명과 본인이 맡은 역할, 주요 성과를 한두 줄로 요약해서 적어주세요.</p>
+                        <div class="tech-stack">
+                            <span>React</span>
+                            <span>Java</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-content">
+                        <h3>세 번째 프로젝트명</h3>
+                        <p>프로젝트에 대한 간단한 설명과 본인이 맡은 역할, 주요 성과를 한두 줄로 요약해서 적어주세요.</p>
+                        <div class="tech-stack">
+                            <span>Unity</span>
+                            <span>C#</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="resume">
+            <h2 class="section-title">Resume</h2>
+            
+            <h3 style="margin-bottom: 20px;"><i class="fas fa-briefcase"></i> Experience</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">20XX.XX - Present</span>
+                    <h4 class="timeline-title">회사명 또는 팀명 기입</h4>
+                    <div class="timeline-subtitle">포지션 (예: 백엔드 개발자)</div>
+                    <p>수행하신 주요 업무 내용, 트러블 슈팅 경험, 그리고 달성한 성과를 적어주세요.</p>
                 </div>
             </div>
 
-            <div class="card">
-                <h4>프로젝트 명을 입력하세요 2</h4>
-                <p>이곳에 두 번째 프로젝트의 간략한 설명과 주요 성과를 한두 줄로 작성해주세요.</p>
-                <div class="skill-group" style="margin-bottom: 0;">
-                    <span class="badge" style="background:#e8f4f8; border:none; padding:4px 10px;">React</span>
-                    <span class="badge" style="background:#e8f4f8; border:none; padding:4px 10px;">Java</span>
+            <h3 style="margin-bottom: 20px; margin-top: 20px;"><i class="fas fa-graduation-cap"></i> Education</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">20XX.XX - 20XX.XX</span>
+                    <h4 class="timeline-title">OO대학교</h4>
+                    <div class="timeline-subtitle">컴퓨터공학과 학사</div>
                 </div>
             </div>
 
-            <div class="card">
-                <h4>프로젝트 명을 입력하세요 3</h4>
-                <p>이곳에 세 번째 프로젝트의 간략한 설명과 주요 성과를 한두 줄로 작성해주세요.</p>
-                <div class="skill-group" style="margin-bottom: 0;">
-                    <span class="badge" style="background:#e8f4f8; border:none; padding:4px 10px;">Unity</span>
-                    <span class="badge" style="background:#e8f4f8; border:none; padding:4px 10px;">C#</span>
+            <h3 style="margin-bottom: 20px; margin-top: 20px;"><i class="fas fa-certificate"></i> Certifications</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">20XX.XX 취득</span>
+                    <h4 class="timeline-title">정보처리기사</h4>
+                    <div class="timeline-subtitle">한국산업인력공단</div>
                 </div>
             </div>
+            
+        </section>
 
-        </div>
-    </section>
+    </main>
 
-    <section>
-        <h2 class="section-title">Experience</h2>
-        <ul class="item-list">
-            <li>
-                <span class="item-title">회사명 또는 팀명 기입</span> 
-                <span class="item-date">20XX.XX - 현재</span>
-                <div>수행하신 업무 내용이나 맡았던 직책을 적어주세요.</div>
-            </li>
-        </ul>
-    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-menu a');
 
-    <section>
-        <h2 class="section-title">Education</h2>
-        <ul class="item-list">
-            <li>
-                <span class="item-title">OO대학교</span> 컴퓨터공학과 학사
-                <span class="item-date">20XX.XX - 20XX.XX</span>
-            </li>
-        </ul>
-    </section>
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - sectionHeight / 3)) {
+                        current = section.getAttribute('id');
+                    }
+                });
 
-    <section>
-        <h2 class="section-title">Certifications</h2>
-        <ul class="item-list">
-            <li>
-                <span class="item-title">정보처리기사</span> - 한국산업인력공단
-                <span class="item-date">20XX.XX 취득</span>
-            </li>
-        </ul>
-    </section>
-
-</div>
-
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -214,16 +214,6 @@
         }
         .portfolio-link:hover { opacity: 0.7; }
 
-        /* 푸터 */
-        footer {
-            background-color: #020617;
-            color: var(--text-muted);
-            text-align: center;
-            padding: 40px;
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border-color);
-        }
-
         /* 모바일 반응형 */
         @media (max-width: 768px) {
             .nav-menu { display: none; }
@@ -237,7 +227,7 @@
 <body>
 
     <header>
-        <a href="#" class="logo">한준탁.이력서</a>
+        <a href="#" class="logo">Resume</a>
         <nav class="nav-menu">
             <a href="#about">소개</a>
             <a href="#skills">기술 스택</a>
@@ -248,12 +238,12 @@
     </header>
 
     <section id="about">
-        <h1>안녕하세요,<br>개발자 <span>한준탁</span>입니다.</h1>
-        <p class="subtitle">효율적인 시스템 설계를 고민하며 안정적인 서비스를 제공하기 위해 노력하는 풀스택 개발자입니다.</p>
+        <h1><br>개발자 <span>한준탁</span></h1>
+        
         
         <div class="contact-links">
-            <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i> your-email@example.com</a>
-            <a href="https://github.com/your-github-id" target="_blank"><i class="fab fa-github"></i> github.com/your-github-id</a>
+            <i class="fas fa-envelope"></i>juntak46059826@gmail.com
+            <a href="https://github.com/Juntak0131" target="_blank"><i class="fab fa-github"></i> github.com/Juntak0131</a>
         </div>
     </section>
 
@@ -262,11 +252,11 @@
         <div class="skills-grid">
             <div class="skill-card">
                 <h3><i class="fas fa-code"></i> 프로그래밍 언어</h3>
-                <p>Java, C#, C, Python, SQL, JavaScript</p>
+                <p>Java, C, C#, Python, SQL, JavaScript</p>
             </div>
             <div class="skill-card">
                 <h3><i class="fas fa-globe"></i> 웹 개발 기술</h3>
-                <p>React, Vite, JSP, Servlet, HTML5, CSS3</p>
+                <p>React, JSP, Servlet, HTML5, CSS3</p>
             </div>
             <div class="skill-card">
                 <h3><i class="fas fa-gamepad"></i> 게임 엔진 및 툴</h3>
@@ -283,14 +273,9 @@
         <h2 class="section-title">경력 및 학력</h2>
         <div class="timeline">
             <div class="timeline-item">
-                <div class="timeline-date">20XX.XX - 현재</div>
-                <div class="timeline-title">주요 프로젝트 팀 또는 회사명</div>
-                <p class="timeline-desc">수행하신 업무와 주요 직무 내용을 이곳에 작성해 주세요.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">20XX.03 - 20XX.02</div>
-                <div class="timeline-title">OO대학교</div>
-                <p class="timeline-desc">컴퓨터공학과 학사 졸업</p>
+                <div class="timeline-date">2024.03 - 2027.02</div>
+                <div class="timeline-title">동양미래대학교</div>
+                <p class="timeline-desc">컴퓨터소프트웨어공학과 졸업</p>
             </div>
         </div>
     </section>
@@ -303,26 +288,19 @@
                 <h3 class="portfolio-title">UPM (컴퓨터 통합 관리 시스템)</h3>
                 <div class="portfolio-tech">C# / PYTHON / FASTAPI / MYSQL</div>
                 <p class="portfolio-desc">실시간 하드웨어 리소스 수집 및 중앙 제어 시스템입니다. C# 에이전트와 FastAPI 백엔드를 연동하여 개발하였습니다.</p>
-                <a href="https://github.com/your-id/upm-project" class="portfolio-link" target="_blank">
+                <a href="https://github.com/DMU-DeCode" class="portfolio-link" target="_blank">
                     프로젝트 상세보기 <i class="fas fa-external-link-alt"></i>
                 </a>
             </div>
 
             <div class="portfolio-card">
-                <h3 class="portfolio-title">프로젝트 제목 기입</h3>
-                <div class="portfolio-tech">사용 기술 (예: REACT / JAVA)</div>
-                <p class="portfolio-desc">프로젝트의 목적과 주요 기능, 본인의 기여도를 2~3줄로 설명해 주세요.</p>
-                <a href="https://your-project-link.com" class="portfolio-link" target="_blank">
-                    바로가기 <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-
-            <div class="portfolio-card">
-                <h3 class="portfolio-title">프로젝트 제목 기입</h3>
-                <div class="portfolio-tech">사용 기술 (예: UNITY / C#)</div>
-                <p class="portfolio-desc">프로젝트를 통해 해결한 문제나 핵심 성과 위주로 작성하시면 좋습니다.</p>
-                <a href="#" class="portfolio-link" target="_blank">
-                    저장소 방문 <i class="fas fa-external-link-alt"></i>
+                <h3 class="portfolio-title">Cosmetique</h3>
+                <div class="portfolio-tech">JAVA / TOMCAT / MySQL / MVC / Face++ API</div>
+                <p class="portfolio-desc">사용자의 얼굴 사진을 AI로 분석하여
+                            주름 · 모공 · 홍조 · 유분 · 피부 톤을 측정하고,
+                            이를 기반으로 가장 적합한 화장품을 추천하는 웹 서비스입니다.</p>
+                <a href="https://github.com/DMD-BackEndProject/MainProject" class="portfolio-link" target="_blank">
+                    프로젝트 상세보기 <i class="fas fa-external-link-alt"></i>
                 </a>
             </div>
 
@@ -332,22 +310,9 @@
     <section id="awards">
         <h2 class="section-title">수상 및 자격증</h2>
         <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">20XX.XX 취득</div>
-                <div class="timeline-title">정보처리기사</div>
-                <p class="timeline-desc">한국산업인력공단</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">20XX.XX 수상</div>
-                <div class="timeline-title">교내 프로그래밍 경진대회 우수상</div>
-                <p class="timeline-desc">실시간 데이터 처리 부문 우수 성적 거둠</p>
-            </div>
+     
         </div>
     </section>
-
-    <footer>
-        <p>© 2026 한준탁. 모든 권리 보유.</p>
-    </footer>
 
 </body>
 </html>

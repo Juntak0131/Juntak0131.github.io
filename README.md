@@ -35,6 +35,12 @@
 | DB · 환경 | MySQL, Linux, Tomcat, Git/GitHub |
 | 데이터 | Pandas, Streamlit |
 
+## 수상
+
+| 날짜 | 수상 | 대회 · 주최 | 증빙 |
+|---|---|---|---|
+| 2026.11.06 | **동상** | 창의융합 인재양성을 위한 교육장비 개발 및 아이디어 경진대회 · (사)한국실천공학교육학회 | [상장 보기](resume/awards/award-2026-kspee-bronze.pdf) |
+
 ## 프로젝트
 
 프로젝트마다 맡은 파트, 어려웠던 점, 느낀 점은 [이력서 페이지](https://juntak0131.github.io/resume/)의 버튼을 누르면 볼 수 있습니다.

@@ -104,7 +104,7 @@
     /* 학력 / 교육 / 관심 분야 */
     .facts {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
+      grid-template-columns: 1.4fr 1fr 1.3fr;
       gap: 10px;
       margin-top: 20px;
     }
@@ -121,6 +121,10 @@
     }
     .fact dd { color: var(--ink); font-weight: 500; line-height: 1.5; }
     .fact dd small { display: block; color: var(--muted); font-size: 11.5px; font-weight: 400; }
+
+    .fact dd { word-break: keep-all; }
+    .cert { display: inline-block; margin-top: 3px; font-size: 11.5px; font-weight: 700; color: #245b94 !important; }
+    .award { color: #8a5a00; font-weight: 700; }
     .gpa {
       display: inline-block;
       margin-top: 5px;
@@ -229,8 +233,8 @@
         <dd>AWS Academy 수강<small>EC2, S3, VPC, IAM 기초 실습</small></dd>
       </div>
       <div class="fact">
-        <dt>관심 분야</dt>
-        <dd>클라우드, 보안, AI</dd>
+        <dt>수상</dt>
+        <dd title="창의융합 인재양성을 위한 교육장비 개발 및 아이디어 경진대회">교육장비 개발 및 아이디어 경진대회 <b class="award">동상</b><small>(사)한국실천공학교육학회 · 2026.11</small><a class="cert" href="awards/award-2026-kspee-bronze.pdf" target="_blank" rel="noopener">상장 보기 ↗</a></dd>
       </div>
     </dl>
 

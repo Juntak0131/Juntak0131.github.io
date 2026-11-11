@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asset Dashboard | 한준탁</title>
+  <meta name="description" content="Asset Dashboard — 맡은 파트, 어려웠던 점, 느낀 점" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../">← 이력서로 돌아가기</a>
+
+    <header class="head">
+      <p class="kicker">2026 · 동양미래대학교 컴퓨터소프트웨어공학과 「백엔드실무프로젝트」 기말 프로젝트</p>
+      <h1>Asset Dashboard<em>컴퓨팅 자산 관리 대시보드</em></h1>
+      <p class="team">백엔드, 화면, 배포 담당</p>
+      <p class="links"><a href="https://github.com/Juntak0131/asset-dashboard" target="_blank" rel="noopener">GitHub · asset-dashboard</a><a href="https://asset-dashboard-rho.vercel.app" target="_blank" rel="noopener">Demo</a></p>
+      <div class="stack"><span>Java 17</span><span>Spring Boot 3</span><span>Spring Security</span><span>JPA</span><span>React 19</span><span>MySQL 8</span><span>Railway</span><span>Vercel</span></div>
+      <nav class="btns"><a class="btn part" href="#part"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8"><path d="M2 4h4l1.5 1.5H14v7.5H2z"/></svg>맡은 파트</a><a class="btn hard" href="#hard"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8"><path d="M8 2l6.5 11.5h-13z"/><path d="M8 6.5v3.2M8 11.6v.4"/></svg>어려웠던 점</a><a class="btn learn" href="#learn"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8"><path d="M5.5 11.5a4.5 4.5 0 1 1 5 0V13h-5z"/><path d="M6 15h4"/></svg>느낀 점</a></nav>
+    </header>
+
+    <section id="about">
+      <h2>어떤 프로젝트인가요</h2>
+      <p>회사의 서버, 노트북, 모니터, 네트워크 장비 같은 컴퓨팅 자산을 등록하고, 누가 어떤 장비를 쓰고 있는지와 시스템 사용률을 한 화면에서 보는 관리자용 웹 대시보드입니다.</p>
+      <p>장비를 사용자에게 빌려주고 돌려받은 기록이 남고, 관리자와 일반 사용자는 볼 수 있는 메뉴가 다릅니다.</p>
+      <div class="noprint"><div class="flow"><div class="node"><b>브라우저</b><span>관리자 / 일반 사용자</span></div><div class="arrow">→</div><div class="node me"><b>Vercel</b><span>React 화면<br>요청마다 로그인 토큰 첨부</span></div><div class="arrow">→</div><div class="node me"><b>Railway</b><span>Spring Boot 서버<br>인증, 권한, 작업 기록</span></div><div class="arrow">→</div><div class="node me"><b>MySQL</b><span>자산, 사용자,<br>대여 이력, 로그</span></div></div></div>
+    </section>
+
+    <section id="part">
+      <h2><span class="tag">맡은 파트</span>백엔드, 화면, 배포</h2>
+      <ul class="list">
+        <li>Spring Boot로 자산 등록 · 수정 · 삭제 · 검색, 사용자 할당과 반납, 대여 이력 조회 API를 만들었습니다.</li>
+        <li>Spring Security와 JWT로 로그인을 처리하고, 관리자와 일반 사용자 권한을 나눴습니다. 사용자 관리 화면은 관리자만 들어갈 수 있습니다.</li>
+        <li>AOP로 등록 · 수정 · 삭제 · 할당 · 반납 작업을 누가 언제 했는지 자동으로 기록했습니다.</li>
+        <li>React로 대시보드, 자산 관리, 대여 이력, 사용자 관리, 로그 화면을 만들었습니다.</li>
+        <li>서버와 MySQL은 Railway, 화면은 Vercel에 배포했습니다.</li>
+      </ul>
+    </section>
+
+    <section id="hard">
+      <h2><span class="tag">어려웠던 점</span>문제와 해결</h2>
+      <div class="item"><h3>대시보드를 어떻게 구성해야 관리자가 보기 편한지 몰랐습니다</h3><p>대시보드를 만들어 본 적이 없어서, 어떤 정보를 어디에 어떻게 보여 줘야 관리자가 보기 편한지 감이 잡히지 않았습니다.</p>
+         <p>그래서 실제 회사에서 쓰는 Genian NAC 대시보드를 찾아보고, 관리자가 화면을 열었을 때 가장 먼저 확인하는 게 무엇인지부터 정리했습니다. 첫 화면 위쪽에는 전체 자산, 사용 중인 자산, 현재 CPU, 수리 · 폐기 대수를 숫자 카드로 두고, 그 아래에 시간대별 사용률 차트와 자산 상태 분포 차트를 놓았습니다.</p>
+         <p>자산 목록, 대여 이력, 로그는 왼쪽 메뉴로 나눴고, 관리자와 일반 사용자에게 보이는 메뉴를 다르게 해서 각자 필요한 화면만 보이게 했습니다.</p></div>
+      <div class="wire" aria-label="정리한 첫 화면 구성">
+        <div class="side"><div class="on">대시보드</div><div>자산 관리</div><div>할당 / 대여 이력</div><div class="admin">사용자 / 권한 (관리자)</div><div>로그 리포트</div></div>
+        <div class="main">
+          <div class="kpis"><div class="kpi">전체 자산<b>숫자</b></div><div class="kpi">사용 중<b>숫자</b></div><div class="kpi">현재 CPU<b>%</b></div><div class="kpi">수리 / 폐기<b>숫자</b></div></div>
+          <div class="charts"><div class="chart">시간대별 리소스 사용률<div class="bars"><i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:60%"></i><i style="height:72%"></i><i style="height:45%"></i><i style="height:58%"></i></div></div><div class="chart">자산 상태 분포<div class="donut"></div></div></div>
+        </div>
+      </div>
+      <p class="note">정리한 첫 화면 구성 — 숫자 카드 → 차트 순서로 배치하고, 상세 화면은 왼쪽 메뉴로 나눴습니다.</p>
+    </section>
+
+    <section id="learn">
+      <h2><span class="tag">느낀 점</span>이 프로젝트에서 배운 것</h2>
+      <div class="learnbox"><p>화면을 만들기 전에 이 화면을 누가, 무엇을 확인하려고 여는지부터 정해야 구성이 정리된다는 걸 알게 됐습니다. 기능을 다 만들어 놓고 배치하는 것보다, 보는 사람이 먼저 찾는 정보부터 순서를 정하는 게 더 중요했습니다.</p></div>
+    </section>
+
+    <footer class="foot">
+      <a href="../">← 이력서로 돌아가기</a>
+      <span class="others">다른 프로젝트 <a href="upm.html">UPM</a> <a href="re-case.html">RE:CASE</a> <a href="cosmethique.html">Cosméthique</a></span>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RE:CASE | 한준탁</title>
+  <meta name="description" content="RE:CASE — 맡은 파트, 어려웠던 점, 느낀 점" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../">← 이력서로 돌아가기</a>
+
+    <header class="head">
+      <p class="kicker">2026 · 동양미래대학교 컴퓨터소프트웨어공학과 「인공지능프로젝트」 · 개인 프로젝트</p>
+      <h1>RE:CASE<em>AI 추리 게임</em></h1>
+      <p class="team">기획부터 화면, 서버, AI 연동, 테스트까지 혼자 진행</p>
+      <p class="links"><a href="https://github.com/Juntak0131/re-case" target="_blank" rel="noopener">GitHub · re-case</a></p>
+      <div class="stack"><span>React 18</span><span>Vite</span><span>FastAPI</span><span>SQLite</span><span>OpenAI API</span><span>pytest</span></div>
+      <nav class="btns"><a class="btn part" href="#part"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8"><path d="M2 4h4l1.5 1.5H14v7.5H2z"/></svg>맡은 파트</a><a class="btn hard" href="#hard"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8"><path d="M8 2l6.5 11.5h-13z"/><path d="M8 6.5v3.2M8 11.6v.4"/></svg>어려웠던 점</a><a class="btn learn" href="#learn"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8"><path d="M5.5 11.5a4.5 4.5 0 1 1 5 0V13h-5z"/><path d="M6 15h4"/></svg>느낀 점</a></nav>
+    </header>
+
+    <section id="about">
+      <h2>어떤 프로젝트인가요</h2>
+      <p>실제 미스터리와 미제사건 6개를 바탕으로 만든 사건을, 예 · 아니오 · 관계없음으로만 답하는 AI 판정관에게 질문 20개를 던져 푸는 추리 게임입니다.</p>
+      <p>질문으로 핵심 단서를 모은 뒤 범인과 사건의 전말을 제출하면, AI 채점관이 점수를 매기고 진실을 공개합니다. 사건 제작실에서는 사건을 직접 쓰거나 AI에게 만들게 한 뒤, 링크나 코드로 친구에게 낼 수 있습니다.</p>
+      <p class="note">풀리지 않은 사건의 범인과 결말, 등장인물 이름은 게임을 위해 새로 만든 허구입니다.</p>
+      <figure><img src="img/recase-play.jpg" alt="RE:CASE 수사 화면" loading="lazy" /><figcaption>수사 화면 — 사건 기록철, 진술 조서(질문과 판정), 수사 수첩</figcaption></figure>
+    </section>
+
+    <section id="part">
+      <h2><span class="tag">맡은 파트</span>전체 (개인 프로젝트)</h2>
+      <ul class="list">
+        <li>게임 규칙을 정하고, 사건 6개마다 전말, 사실 목록, 핵심 단서 5개를 담은 진실 원장을 썼습니다.</li>
+        <li>React로 증거 보드(메인), 진술 조서, 수사 수첩, 결과 보고서, 사건 제작실 화면을 만들었습니다.</li>
+        <li>FastAPI로 게임 진행, 질문 판정, 채점, 사용자 사건 저장(SQLite) 기능을 만들었습니다.</li>
+        <li>OpenAI API로 판정관, 채점관, 사건 생성, 사건 검수, 모더레이션을 연동했습니다.</li>
+        <li>실제 AI를 부르지 않고 가짜 AI를 끼워 전체 흐름을 확인하는 테스트 19개를 만들었습니다.</li>
+      </ul>
+      <div class="flow"><div class="node"><b>플레이어 질문</b><span>질문 150자 제한</span></div><div class="arrow">→</div><div class="node me"><b>서버 검사</b><span>이미 한 질문은 이전 판정을<br>다시 보여 주고 차감 안 함</span></div><div class="arrow">→</div><div class="node me"><b>AI 판정관</b><span>서버에만 있는 진실 원장을<br>근거로 판정</span></div><div class="arrow">→</div><div class="node"><b>판정 결과</b><span>예 · 아니오 · 관계없음만 표시<br>핵심 단서 자동 체크</span></div></div>
+      <table>
+        <tr><th style="width:110px">구분</th><th>내용</th></tr>
+        <tr><td>채점</td><td>범인 40점 (공범 지목 시 20점) + 핵심 단서 하나당 12점 = 100점</td></tr>
+        <tr><td>비용 관리</td><td>같은 질문은 저장해 두고 다시 호출하지 않음, IP당 질문 분당 30회 · 사건 생성 시간당 6회 제한</td></tr>
+        <tr><td>모델</td><td>기본 모델을 쓸 수 없으면 다른 모델로 자동 전환</td></tr>
+      </table>
+    </section>
+
+    <section id="hard">
+      <h2><span class="tag">어려웠던 점</span>문제와 해결</h2>
+      <div class="item"><h3>1. AI가 정답을 말해 버릴 수 있었습니다</h3><p>AI 판정관은 진실을 모두 알고 있어서, "정답 알려줘" 같은 질문을 받으면 그대로 말해 버릴 위험이 있었습니다. 진실 원장은 서버에만 두고, 판정관의 답은 JSON 스키마로 '예, 아니오, 관계없음, 판정 불가' 중 하나만 나오게 묶었습니다. 추리를 제출하기 전에는 어떤 응답에도 진실이 담기지 않는다는 것을 테스트로 확인했습니다.</p></div><div class="item"><h3>2. 같은 질문에 답이 달라졌습니다</h3><p>판정관이 그때그때 짐작해서 답하면 같은 질문에도 답이 바뀌었습니다. 사건마다 사실 목록을 미리 정해 두고, 판정관은 그 목록만 근거로 답하게 했습니다. 이미 한 질문은 AI를 다시 부르지 않고 이전 판정을 보여 줍니다.</p></div><div class="item"><h3>3. 실제 사건과 허구가 섞일 수 있었습니다</h3><p>실제 사건을 바탕으로 했기 때문에, 게임에서 새로 만든 범인이나 결말이 사실처럼 읽힐 수 있었습니다. 증거와 인물에 '실제 기록', '가상 단서', '가상 이름'을 표시하고, 판정관에게도 원장에 없는 실제 사건 지식은 쓰지 말라고 전달했습니다.</p></div><div class="item"><h3>4. 사용자가 만든 사건도 안전해야 했습니다</h3><p>누구나 사건을 만들어 공유할 수 있게 하니, 부적절한 내용이나 실존 인물이 들어갈 수 있었습니다. OpenAI 모더레이션과 AI 검토를 거쳐 이런 사건은 저장되지 않게 했고, 사건을 고칠 수 있는 수정 키는 해시로만 저장해서 링크를 받은 사람은 진실을 보거나 고칠 수 없게 했습니다.</p></div>
+    </section>
+
+    <section id="learn">
+      <h2><span class="tag">느낀 점</span>이 프로젝트에서 배운 것</h2>
+      <div class="learnbox"><p>AI를 붙이는 것 자체보다 AI가 하면 안 되는 일을 막는 데 시간이 훨씬 많이 들었습니다. 프롬프트에 "정답을 말하지 마"라고 쓰는 것만으로는 부족했고, 정답을 서버에만 두고 출력 형식을 묶는 식으로 구조에서 막아야 한다는 걸 알게 됐습니다.</p>
+      <p>실제 AI 없이 돌아가는 테스트를 만들어 두니, 기능을 고칠 때마다 정답이 새지 않는지 바로 확인할 수 있었습니다.</p></div>
+    </section>
+
+    <footer class="foot">
+      <a href="../">← 이력서로 돌아가기</a>
+      <span class="others">다른 프로젝트 <a href="upm.html">UPM</a> <a href="asset-dashboard.html">Asset Dashboard</a> <a href="cosmethique.html">Cosméthique</a></span>
+    </footer>
+  </main>
+</body>
+</html>

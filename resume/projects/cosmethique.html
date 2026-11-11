@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cosméthique | 한준탁</title>
+  <meta name="description" content="Cosméthique — 맡은 파트, 어려웠던 점, 느낀 점" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="../">← 이력서로 돌아가기</a>
+
+    <header class="head">
+      <p class="kicker">2025 · 백엔드 팀 프로젝트 7조</p>
+      <h1>Cosméthique<em>피부 분석 화장품 추천 웹</em></h1>
+      <p class="team">2인 팀 (한준탁, 임성은) · Face++ API 연동, 백엔드, DB 설계, 테스트 담당</p>
+      <p class="links"><a href="https://github.com/DMD-BackEndProject/MainProject" target="_blank" rel="noopener">GitHub · MainProject</a></p>
+      <div class="stack"><span>Java</span><span>JSP</span><span>Servlet</span><span>Apache Tomcat 9</span><span>MySQL 8</span><span>Face++ API</span></div>
+      <nav class="btns"><a class="btn part" href="#part"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8"><path d="M2 4h4l1.5 1.5H14v7.5H2z"/></svg>맡은 파트</a><a class="btn hard" href="#hard"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8"><path d="M8 2l6.5 11.5h-13z"/><path d="M8 6.5v3.2M8 11.6v.4"/></svg>어려웠던 점</a><a class="btn learn" href="#learn"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.8"><path d="M5.5 11.5a4.5 4.5 0 1 1 5 0V13h-5z"/><path d="M6 15h4"/></svg>느낀 점</a></nav>
+    </header>
+
+    <section id="about">
+      <h2>어떤 프로젝트인가요</h2>
+      <p>얼굴 사진을 올리면 주름, 모공, 홍조, 유분, 피부 톤 다섯 가지를 점수로 보여 주고, 피부 타입에 맞는 화장품을 추천하는 웹 서비스입니다.</p>
+      <p>회원가입과 로그인을 하면 분석 기록이 저장되어 지난 결과를 다시 볼 수 있습니다. JSP와 Servlet으로 만들고 Tomcat에서 실행했습니다.</p>
+      <div class="flow"><div class="node"><b>사진 업로드</b><span>JSP 화면</span></div><div class="arrow">→</div><div class="node me"><b>Face++ API</b><span>사진에서 얼굴 위치 찾기</span></div><div class="arrow">→</div><div class="node me"><b>피부 점수</b><span>5개 항목 점수<br>(현재는 임의 값)</span></div><div class="arrow">→</div><div class="node me"><b>피부 타입 · 추천</b><span>지성 · 건성 등 판정 후<br>DB에서 화장품 추천</span></div></div>
+    </section>
+
+    <section id="part">
+      <h2><span class="tag">맡은 파트</span>Face++ API 연동, 백엔드, DB 설계, 테스트</h2>
+      <ul class="list">
+        <li>Face++ API로 올린 사진에서 얼굴을 찾고, 얼굴 위치를 받아오는 부분을 연동했습니다.</li>
+        <li>점수로 피부 타입(지성, 건성, 복합성, 민감성, 정상)을 정하고, DB의 제품 데이터에서 맞는 화장품을 골라 보여 주는 추천 로직을 만들었습니다.</li>
+        <li>회원, 분석 기록, 제품 테이블을 설계하고 Servlet, DAO, DTO로 나눈 MVC 구조로 구현했습니다.</li>
+        <li>회원가입, 로그인, 분석, 추천 기능을 테스트했습니다.</li>
+      </ul>
+    </section>
+
+    <section id="hard">
+      <h2><span class="tag">어려웠던 점</span>문제와 해결</h2>
+      <div class="item"><h3>얼굴 분석 API를 마음대로 쓸 수 없었습니다</h3><p>얼굴을 분석해 주는 API는 대부분 유료였고, 무료로 쓸 수 있는 것도 기능과 사용량이 너무 제한되어 있어서 개발하기가 어려웠습니다.</p>
+         <p>Face++의 무료 기능으로 사진 속 얼굴 위치까지는 찾을 수 있었지만, 피부 상태를 점수로 알려 주는 기능은 쓸 수 없었습니다. 그래서 주름, 모공, 홍조, 유분, 톤 점수는 임의의 값으로 정해서 화면과 추천 흐름이 끝까지 동작하게 했습니다. 실제 피부 상태를 반영하지 못한다는 한계가 남아 있습니다.</p></div>
+    </section>
+
+    <section id="learn">
+      <h2><span class="tag">느낀 점</span>이 프로젝트에서 배운 것</h2>
+      <div class="learnbox"><p>외부 API에 기대는 기능은 만들기 전에 비용과 사용 제한부터 확인해야 한다는 걸 알게 됐습니다. 점수를 계산하는 부분은 따로 분리해 두어서, 나중에 실제 분석 방법으로 바꿀 때 그 부분만 고치면 되도록 했습니다.</p></div>
+    </section>
+
+    <footer class="foot">
+      <a href="../">← 이력서로 돌아가기</a>
+      <span class="others">다른 프로젝트 <a href="upm.html">UPM</a> <a href="re-case.html">RE:CASE</a> <a href="asset-dashboard.html">Asset Dashboard</a></span>
+    </footer>
+  </main>
+</body>
+</html>

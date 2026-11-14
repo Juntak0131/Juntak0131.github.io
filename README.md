@@ -61,6 +61,7 @@
 
 - 실제 미스터리와 미제사건 6개를 바탕으로 한 추리 게임을 React, FastAPI, OpenAI API로 구현
 - 정답은 서버에만 두고 AI 답변을 예, 아니오, 관계없음으로 제한해 정답이 새지 않게 처리
+- 후기 설문과 관리자 화면을 붙여 Render에 배포, 관리자 비밀번호 연속 실패 잠금과 요청 횟수 제한 적용
 
 ### Asset Dashboard — 컴퓨팅 자산 관리 대시보드
 `2026` `백엔드실무프로젝트` · [GitHub](https://github.com/Juntak0131/asset-dashboard) · [Demo](https://asset-dashboard-rho.vercel.app)
